@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Visualization</title>
+</head>
+<body>
+  <div id="visualization">
+    <h1 id="title"></h1>
+    <p id="risk"><u>Risk Factors Predicted</u></p>
+    <p id="riskbody">{{ company_risks['GS'] }}</p>
+
+    <p id="stock"><u>Important Stockholder Information</u></p>
+    <p id="stockbody"></p>
+
+    <p id="business"><u>General Business Operations</u></p>
+    <p id="businessbody"></p>
+  </div>
+
+  <script>
+    // Get the ticker from the query parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    var ticker = urlParams.get('ticker');
+    // Set title and body based on the selected company
+
+    // fetch('http://localhost:5000/get_riskdata?ticker=' + ticker)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     // Set title and body based on the data received
+    //     document.getElementById("risk").innerText = "Risk Factors Predicted";
+    //     document.getElementById("riskbody").innerText = data;
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching data:', error);
+    //     // Display error message if data retrieval fails
+    //     document.getElementById("risk").innerText = "Error";
+    //     document.getElementById("riskbody").innerText = "Failed to fetch data.";
+    //   });
+
+    // fetch('http://localhost:5000/get_stockdata?ticker=' + ticker)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     // Set title and body based on the data received
+    //     document.getElementById("stock").innerText = "Important Stockholder Information";
+    //     document.getElementById("stockbody").innerText = data;
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching data:', error);
+    //     // Display error message if data retrieval fails
+    //     document.getElementById("stock").innerText = "Error";
+    //     document.getElementById("stockbody").innerText = "Failed to fetch data.";
+    //   });
+
+    // fetch('http://localhost:5000/get_businessdata?ticker=' + ticker)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     // Set title and body based on the data received
+    //     document.getElementById("business").innerText = "General Business Operations";
+    //     document.getElementById("businessbody").innerText = data;
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching data:', error);
+    //     // Display error message if data retrieval fails
+    //     document.getElementById("business").innerText = "Error";
+    //     document.getElementById("businessbody").innerText = "Failed to fetch data.";
+    //   });
+
+
+
+    document.getElementById("title").innerText = ticker;
+
+    // document.getElementById("riskbody").innerText = "{{ company_risks[ticker] }}";
+    document.getElementById("stockbody").innerText = "{{ stockInfo[ticker] }}";
+    document.getElementById("businessbody").innerText = "{{ businessInfo[ticker] }}";
+    
+  </script>
+</body>
+</html>
